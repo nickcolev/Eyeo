@@ -1,0 +1,35 @@
+/* Simple Calculator style */
+html,body { height: 100%; }
+body {
+	font-family: "Open Sans",sans-serif;
+	font-size: 2.5em;
+	background-color: #eee;
+}
+
+td {
+	text-align: center;
+	vertical-align: middle;
+	background: radial-gradient(#fee,#ccc);
+}
+
+.click {
+	cursor: pointer;height: 3em;
+}
+
+.slim {
+	width: 10%;
+}
+
+#calc {
+	background-color: #ddd;
+	border-radius: 2px;
+}
+/* TODO Rounded corners */
+#display {
+	border-radius: 0.25em;
+	text-align: right;
+	margin: 4px 1em 4px 9px;
+	padding-right: 1em;
+	width: 93%; height: 95%;
+	font-size: 1.1em;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"/>
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans[:400,700]" rel="stylesheet" type="text/css"/>
+	<link href="calc.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="calc.js"></script>
+</head>
+<body>
+
+<form onsubmit="return jsc.calc()">
+ <table id="calc" align="center" border="3" cellpadding="8" cellspacing="0" height="98%" width="98%">
+  <tr><td colspan="4"><input id="display" name="view" onfocus="this.select()"/></td><td class="click slim">C</td></tr>
+  <tr><td class="click slim" title="Add to Memory">M+</td><td class="click">7</td><td class="click">8</td><td class="click">9</td><td class="click">+</td></tr>
+  <tr><td class="click" title="Substract from Memory">M-</td></td><td class="click">4</td><td class="click">5</td><td class="click">6</td><td class="click">-</td></tr>
+  <tr><td class="click" title="Clear Memory">MC</td><td class="click">1</td><td class="click">2</td><td class="click">3</td><td class="click">*</td></tr>
+  <tr><td id="m" class="click">M</td><td class="click">0</td><td class="click">.</td><td class="click">=</td><td class="click">/</td></tr>
+ </table>
+</form>
+
+<p>What if some text is added?</p>
+
+</body></html>

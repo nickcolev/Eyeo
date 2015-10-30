@@ -3,21 +3,44 @@
 <head>
 	<title>Calculator</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="author" content="Nick Kolev, nickkolev@yahoo.com"/>
+	<meta name="date" content="2015-10-30"/>
+	<!-- SEO -->
+	<meta name="keywords" content="Calculator, Online, Web-based, JavaScript"/>
+	<!-- Mobile -->
 	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"/>
+	<!-- CDN -->
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css"/>
+	<!-- Local resources -->
 	<link href="calc.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="calc.js"></script>
 </head>
 <body>
 
- <table id="calc" align="center" cellpadding="2">
-  <tr><td colspan="4" align="center"><input id="display" name="view" onfocus="select()"/></td><td class="slim"><button>C</button></td></tr>
-  <tr><td class="slim" title="Add to Memory"><button>M+</button></td><td><button>7</button></td><td><button>8</button></td><td><button>9</button></td><td><button>+</button></td></tr>
-  <tr><td class="slim" title="Substract from Memory"><button>M-</button></td></td><td><button>4</button></td><td><button>5</td><td><button>6</button></td><td><button>-</button></td></tr>
-  <tr><td class="slim" title="Clear Memory"><button>MC</button></td><td><button>1</button></td><td><button>2</button></td><td><button>3</button></td><td><button>*</button></td></tr>
-  <tr><td class="slim"><button id="m">M</button></td><td><button>0</button></td><td><button>.</button></td><td><button>=</button></td><td><button>/</button></td></tr>
- </table>
+<!-- Main layout -->
+<table id="calc" align="center" cellpadding="2">
+	<tr><td colspan="4" align="center"><input id="display" name="view" onfocus="select()"/></td><td class="slim"><button>C</button></td></tr>
+	<tr><td class="slim" title="Add to Memory"><button>M+</button></td><td><button>7</button></td><td><button>8</button></td><td><button>9</button></td><td><button>+</button></td></tr>
+	<tr><td class="slim" title="Substract from Memory"><button>M-</button></td></td><td><button>4</button></td><td><button>5</td><td><button>6</button></td><td><button>-</button></td></tr>
+	<tr><td class="slim" title="Clear Memory"><button>MC</button></td><td><button>1</button></td><td><button>2</button></td><td><button>3</button></td><td><button>*</button></td></tr>
+	<tr><td class="slim"><button id="m">M</button></td><td><button>0</button></td><td><button>.</button></td><td><button>=</button></td><td><button>/</button></td></tr>
+</table>
 
-<p>What if some text is added?</p>
+<div id="notes">
+<p>Simple web-based calculator</p>
+<p class="ul"><b>Intended focus:</b>
+<ul>
+	<li>Usability &mdash; Large, well visible buttons (particularly good when used on a mobile device). Convenient layout.</li>
+	<li>Maintainability &mdash; MVC separation of the content/layout (HTML), design (CSS), and logic (JavaScript).</li>
+	<li>Compatibility &mdash; To work on all contemporary browsers, including the mobile device ones.</li>
+	<li>Standard &mdash; Well-formed HTML5. JS code in own namespace and follow nowadays coding syntax and rules.</li>
+</ul></p>
+<p class="ul note"><b>Notes:</b>
+<ul class="note">
+ <li>This development is in regard to a test task, part of my application for <i>Frontend Developer</i> at <i>Eyeo GmbH</i>.</li>
+ <li>As the task asked for &quot;exponentiation&quot; &mdash; this could be achieved by x**y, e.g. 2**2</li>
+ <li>As required, no external JavaScript libraries are used. Everything is done from scratch.</li>
+</ul></p>
+</div>
 
 </body></html>

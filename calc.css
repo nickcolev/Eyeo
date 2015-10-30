@@ -1,4 +1,8 @@
-/* Simple Calculator style */
+/*
+ * Simple Calculator style
+ * Tweak the View (design) here
+ */
+
 body {
 	font-family: "Open Sans",sans-serif;
 }
@@ -31,3 +35,8 @@ button	{
 button,#display	{
 	border-radius: 12px;
 }
+
+/* Documentation */
+#notes	{ margin-left: 2em; margin-top: 3em; }
+ul,.ul	{ margin-top: 0px; padding-top: 0px; margin-bottom: 4px; }
+.note	{ font-size: 0.8em; color: #555; }

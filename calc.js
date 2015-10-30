@@ -18,10 +18,9 @@ var jsc = {
   },
 
   clear: function(oTarget) {
-    var oDisplay = document.getElementById("display"),
-        l = oDisplay.value.length;
-    if (l > 0) oDisplay.value = oDisplay.value.substr(0, --l);
-    this.release(oTarget);
+    var o = this.getDisplay(),
+        l = o.value.length;
+    if (l > 0) o.value = o.value.substr(0,--l);
   },
 
   toMemory: function(add) {		// Same fn for add(true)/substract(false)

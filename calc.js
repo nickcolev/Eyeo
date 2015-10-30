@@ -1,98 +1,93 @@
 var jsc = {
 
-  memory: 0,
-  target: null,
+	memory: 0,
 
-  number: function(o) {
-    this.getDisplay().value += o.innerText;
-  },
+	number: function(o) {
+		this.getDisplay().value += o.innerHTML;
+	},
 
-  calc: function() {
-    var o = this.getDisplay();
-    if (o.value) {
-      try {
-        o.value = eval (o.value);
-      } catch (e) { alert ("Bad expression"); }
-    }
-    return false;
-  },
+	calc: function() {
+		var o = this.getDisplay();
+		if (o.value) {
+			// Process exponent (if any)
+			var v = o.value.replace(/(.*)\*\*(.*)/, 'Math.pow($1,$2)');
+			try {
+				o.value = eval (v);
+			} catch (e) {
+				alert ("Bad expression");
+			}
+		}
+		return false;
+	},
 
-  clear: function(oTarget) {
-    var o = this.getDisplay(),
-        l = o.value.length;
-    if (l > 0) o.value = o.value.substr(0,--l);
-  },
+	clear: function() {
+		var o = this.getDisplay(),
+			l = o.value.length;
+		if (l > 0) o.value = o.value.substr(0,--l);
+	},
 
-  toMemory: function(add) {		// Same fn for add(true)/substract(false)
-    this.calc();
-    // TODO Comment the logic below
-    this.memory += (add ? '1' : '-1') * this.getValue();
-    this.memFeedback();
-  },
+	toMemory: function(add) {		// Same fn for add(true)/substract(false)
+		this.calc();
+		// TODO Comment the logic below
+		this.memory += (add ? '1' : '-1') * this.getValue();
+		this.memFeedback();
+	},
 
-  memFeedback: function() {
-    var o = document.getElementById("m");
-    if (this.memory === 0) {
-      o.style.color = o.title = '';
-    } else {
-      o.style.color = "#F00";
-      o.title = jsc.memory;
+	memFeedback: function() {
+		var o = document.getElementById("m");
+		if (this.memory === 0) {
+			o.style.color = o.title = '';
+		} else {
+			o.style.color = "#F00";
+			o.title = jsc.memory;
 	}
-  },
+	},
 
-  reset: function() {
-    this.getDisplay().value = '';
-  },
+	reset: function() {
+		this.getDisplay().value = '';
+	},
 
-  // Helpers
-  getDisplay: function() {
-    return document.getElementById("display");
-  },
+	// Helpers
+	getDisplay: function() {
+		return document.getElementById("display");
+	},
 
-  getValue: function() {
-    return parseFloat(this.getDisplay().value);
-  },
+	getValue: function() {
+		return parseFloat(this.getDisplay().value);
+	},
 
-  press: function(e) {
-    var o = this.target = e.target;
-    if (o.className.match(/click/))		// Only objects having class 'click'
-      o.style.backgroundColor = '#888';
-  },
-
-  release: function(e) {
-    var o = e.target;
-    if (o.className.match(/click/)) {	// Process only objects having class 'click'
-    // Dispatch
-	switch(o.innerText) {				// Button letter(s)
-      case 'C':
-        jsc.clear(o);
-        break;
-      case '=':
-        jsc.calc();
-        break;
-      case 'M':
-        jsc.reset();
-        jsc.getDisplay().value = jsc.memory;
-        break;
-      case 'MC':
-        jsc.memory = 0;
-        document.getElementById("m").style.color = '';
-        break;
-      case 'M+':
-        jsc.toMemory(true);
-        break;
-      case 'M-':
-        jsc.toMemory(false);
-        break;
-      default:		// Number or arithmentic button
-        jsc.number(o);
-        break;
+	click: function(e) {
+		var o = e.target;
+		if (o.type == 'submit') {		// Process only objects having class 'click'
+			// Dispatch
+			switch(o.innerHTML) {				// Button letter(s)
+				case 'C':
+					jsc.clear(o);
+					break;
+				case '=':
+					jsc.calc();
+					break;
+				case 'M':
+					jsc.reset();
+					jsc.getDisplay().value = jsc.memory;
+					break;
+				case 'MC':
+					jsc.memory = 0;
+					document.getElementById("m").style.color = '';
+					break;
+				case 'M+':
+					jsc.toMemory(true);
+					break;
+				case 'M-':
+					jsc.toMemory(false);
+					break;
+				default:		// Number or arithmentic button
+					jsc.number(o);
+					break;
+			}
+		}
 	}
-  }
-	o.style.backgroundColor = '';
-  }
 
 };
 
-document.addEventListener('mousedown', jsc.press, false);
-document.addEventListener('mouseup', jsc.release, false);
+document.addEventListener('click', jsc.click, false);

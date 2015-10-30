@@ -1,35 +1,33 @@
 /* Simple Calculator style */
-html,body { height: 100%; }
 body {
 	font-family: "Open Sans",sans-serif;
-	font-size: 2.5em;
-	background-color: #eee;
 }
 
-td {
-	text-align: center;
-	vertical-align: middle;
-	/*background: radial-gradient(#fee,#ccc);*/
+button	{
+	font-size: 2em;
+	height: 3.05em;
+	width: 4em;
+	color: #111;
 }
-
-.click {
-	cursor: pointer;height: 3em;
-}
-
 .slim {
 	width: 10%;
+	font-size: 1em;
 }
 
 #calc {
-	background-color: #ddd;
-	border-radius: 2px;
+	border: 1px solid #000;
+	border-radius: 15px;
+	background: radial-gradient(#888,#555);
+	width: 50%;
 }
-/* TODO Rounded corners */
+
 #display {
-	border-radius: 0.25em;
+	vertical-align: middle;
 	text-align: right;
-	margin: 4px 1em 4px 9px;
-	padding-right: 1em;
-	width: 93%; height: 95%;
-	font-size: 1.1em;
+	width: 97%; height: 1.9em;
+	font-size: 3em;
+}
+
+button,#display	{
+	border-radius: 12px;
 }

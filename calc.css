@@ -4,7 +4,10 @@
  */
 
 body {
+	background-color: #ddb;
 	font-family: "Open Sans",sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 button	{
@@ -19,9 +22,9 @@ button	{
 }
 
 #calc {
+	background-color: #555;
 	border: 1px solid #000;
 	border-radius: 15px;
-	background: radial-gradient(#888,#555);
 	width: 50%;
 }
 

@@ -9,7 +9,7 @@ body {
 td {
 	text-align: center;
 	vertical-align: middle;
-	background: radial-gradient(#fee,#ccc);
+	/*background: radial-gradient(#fee,#ccc);*/
 }
 
 .click {

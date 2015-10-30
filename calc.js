@@ -1,10 +1,12 @@
 var jsc = {
+
   memory: 0,
+  target: null,
+
   number: function(o) {
-	var c = o.innerText ? o.innerText : o;
-	document.getElementById("display").value += c;
-	this.release();
+    this.getDisplay().value += o.innerText;
   },
+
   calc: function() {
     var o = this.getDisplay();
     if (o.value) {
@@ -14,18 +16,21 @@ var jsc = {
     }
     return false;
   },
+
   clear: function(oTarget) {
     var oDisplay = document.getElementById("display"),
         l = oDisplay.value.length;
     if (l > 0) oDisplay.value = oDisplay.value.substr(0, --l);
     this.release(oTarget);
   },
+
   toMemory: function(add) {		// Same fn for add(true)/substract(false)
     this.calc();
     // TODO Comment the logic below
     this.memory += (add ? '1' : '-1') * this.getValue();
     this.memFeedback();
   },
+
   memFeedback: function() {
     var o = document.getElementById("m");
     if (this.memory === 0) {
@@ -35,40 +40,33 @@ var jsc = {
       o.title = jsc.memory;
 	}
   },
+
   reset: function() {
     this.getDisplay().value = '';
   },
+
   // Helpers
   getDisplay: function() {
     return document.getElementById("display");
   },
+
   getValue: function() {
     return parseFloat(this.getDisplay().value);
   },
-  press: function(o) {
-	this.target = o;
-	o.style.backgroundColor = '#888';
+
+  press: function(e) {
+    var o = this.target = e.target;
+    if (o.className.match(/click/))		// Only objects having class 'click'
+      o.style.backgroundColor = '#888';
   },
-  release: function(o) {
-    if (!o) o = this.target;
-	o.style.backgroundColor = '';
-  }
-};
 
-document.addEventListener('mousedown', function(e) {
-  if (e.target.className.match(/^click/))		// Only objects having class 'click'
-    jsc.press(e.target);
-},false);
-
-document.addEventListener('mouseup', function(e) {
-	//e.preventDefault();
-	//e.stopPropagation();
-	jsc.release(e.target);
-  if (e.target.className.match(/^click/)) {		// Process only objects having class 'click'
+  release: function(e) {
+    var o = e.target;
+    if (o.className.match(/click/)) {	// Process only objects having class 'click'
     // Dispatch
-	switch(e.target.innerText) {				// Button letter(s)
+	switch(o.innerText) {				// Button letter(s)
       case 'C':
-        jsc.clear(e.target);
+        jsc.clear(o);
         break;
       case '=':
         jsc.calc();
@@ -88,8 +86,14 @@ document.addEventListener('mouseup', function(e) {
         jsc.toMemory(false);
         break;
       default:		// Number or arithmentic button
-        jsc.number(e.target);
+        jsc.number(o);
         break;
 	}
   }
-},false);
+	o.style.backgroundColor = '';
+  }
+
+};
+
+document.addEventListener('mousedown', jsc.press, false);
+document.addEventListener('mouseup', jsc.release, false);
